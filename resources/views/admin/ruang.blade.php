@@ -73,10 +73,16 @@
                                     </button>
                                     @endif
                                 </td>
-                                <td><button class="btn btn-primary px-4 mb-4" type="button" data-bs-toggle="modal"
+                                <td>
+                                    <button class="btn btn-primary px-4 mb-4" type="button" data-bs-toggle="modal"
                                         data-bs-target="#editRuang{{ $r->id }}">
-                                        Edit
-                                    </button></td>
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button class="btn btn-danger px-4 mb-4" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#hapusruang{{ $r->id }}">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
                             </tr>
                             @endforeach
                             @else
@@ -167,7 +173,7 @@
                 <h5 class="modal-title" id="editRuangLabel">Edit Ruang</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/olaheditruang" method="POST" enctype="multipart/form-data">
+            <form action="/olahruang/{{ $r->id }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -258,6 +264,30 @@
                                 value="verifikasi">Selesai</button>
                         </div>
                     </form>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- Form Hapus ruang -->
+@foreach ($ruang as $r)
+<div class="modal fade" id="hapusruang{{ $r->id }}" tabindex="-1" aria-labelledby="hapusruang{{ $r->id }}"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="hapusruang{{ $r->id }}">Hapus ruang</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/hapusruang/{{ $r->id }}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus ruang {{ $r->nomor_ruang }}?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
             </form>
         </div>

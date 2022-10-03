@@ -44,11 +44,23 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $g->nama_gedung }}</td>
                                 <td>{{ $g->alamat_gedung }}</td>
-                                <td>{{ $g->is_active }}</td>
-                                <td><button class="btn btn-primary px-4 mb-4" type="button" data-bs-toggle="modal"
+                                <td>
+                                    @if ($g->is_active == 1)
+                                    <span class="badge bg-success">Aktif</span>
+                                    @else
+                                    <span class="badge bg-danger">Tidak Aktif</span>
+                                    @endif
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary px-4 mb-4" type="button" data-bs-toggle="modal"
                                         data-bs-target="#editgedung{{ $g->id }}">
-                                        Edit
-                                    </button></td>
+                                        <i class="bi bi-pencil-square"></i>
+                                    </button>
+                                    <button class="btn btn-danger px-4 mb-4" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#hapusgedung{{ $g->id }}">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
                             </tr>
                             @endforeach
                             @else
@@ -127,6 +139,30 @@
                 <div class="modal-footer">
                     <button type="reset" class="btn btn-secondary">Reset</button>
                     <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+{{-- Membuat Hapus OPD --}}
+@foreach ($gedung as $g)
+<div class="modal fade" id="hapusgedung{{ $g->id }}" tabindex="-1" aria-labelledby="hapusgedung{{ $g->id }}Label"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="hapusgedung{{ $g->id }}Label">Hapus gedung</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/hapusgedung/{{ $g->id }}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <p>Apakah anda yakin ingin menghapus gedung {{ $g->nama_gedung }}?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
                 </div>
             </form>
         </div>

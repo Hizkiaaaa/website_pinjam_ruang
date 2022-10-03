@@ -36,14 +36,12 @@
     <nav class="main-navbar">
         <div class="container ">
             <ul>
-                @if(!Auth::check())
                 <li class="menu-item mx-auto">
                     <a href="/" class='menu-link'>
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="bi bi-calendar-date"></i>
                         <span>Calendar</span>
                     </a>
                 </li>
-                @endif
                 <li class="menu-item mx-auto">
                     <a href="/dashboard" class='menu-link'>
                         <i class="bi bi-grid-fill"></i>
@@ -54,19 +52,19 @@
                 @if(!Auth::check())
                 <li class="menu-item mx-auto">
                     <a href="/ruangan" class='menu-link'>
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="bi bi-building"></i>
                         <span>Ruangan</span>
                     </a>
                 </li>
                 <li class="menu-item mx-auto">
                     <a href="/tentangkami" class='menu-link'>
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="bi bi-info-circle"></i>
                         <span>Tentang Kami</span>
                     </a>
                 </li>
                 <li class="menu-item mx-auto">
                     <a href="/login" class='menu-link'>
-                        <i class="bi bi-grid-fill"></i>
+                        <i class="bi bi-box-arrow-in-right"></i>
                         <span>Login</span>
                     </a>
                 </li>
@@ -74,7 +72,7 @@
                 @if(Auth::user()->role_id >= 1)
                 <li class="menu-item active has-sub mx-auto">
                     <a href="#" class='menu-link'>
-                        <i class="bi bi-grid-1x2-fill"></i>
+                        <i class="bi bi-journal-text"></i>
                         <span>Data Pinjaman</span>
                     </a>
                     <div class="submenu ">
@@ -98,7 +96,7 @@
                 @if(Auth::user()->role_id >= 4)
                 <li class="menu-item active has-sub mx-auto">
                     <a href="#" class='menu-link'>
-                        <i class="bi bi-grid-1x2-fill"></i>
+                        <i class="bi bi-wrench-adjustable-circle"></i>
                         <span>Data Olah</span>
                     </a>
                     <div class="submenu ">
@@ -107,9 +105,6 @@
                             <ul class="submenu-group">
                                 <li class="submenu-item  ">
                                     <a href="/olahgedung" class='submenu-link'>Gedung</a>
-                                </li>
-                                <li class="submenu-item  ">
-                                    <a href="/olahlaporan" class='submenu-link'>Laporan</a>
                                 </li>
                                 <li class="submenu-item  ">
                                     <a href="/olahruang" class='submenu-link'>Ruangan</a>
@@ -149,7 +144,7 @@
                 @endif
                 <li class="menu-item active has-sub mx-auto">
                     <a href="#" class='menu-link'>
-                        <i class="bi bi-grid-1x2-fill"></i>
+                        <i class="bi bi-gear"></i>
                         <span>Pengaturan</span>
                     </a>
                     <div class="submenu ">

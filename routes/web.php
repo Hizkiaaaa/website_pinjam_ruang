@@ -46,11 +46,13 @@ Route::post('/ganti_password', [ProfilController::class, 'ganti_password'])->nam
 Route::get('/olahgedung', [AdminController::class, 'index'])->name('gedung')->middleware('is_admin');
 Route::post('/olahgedung', [AdminController::class, 'tambah_gedung'])->name('gedung')->middleware('is_admin');
 Route::post('/olahgedung/{id}', [AdminController::class, 'edit_gedung'])->name('gedung')->middleware('is_admin');
-
+Route::get('/hapusgedung/{id}', [AdminController::class, 'hapus_gedung'])->name('gedung')->middleware('is_admin');
 
 Route::get('/olahruang', [AdminController::class, 'olah_ruang'])->name('ruangan')->middleware('is_admin');
 Route::post('/olahruang', [AdminController::class, 'tambah_ruang'])->name('ruangan')->middleware('is_admin');
+Route::post('/olahruang/{id}', [AdminController::class, 'edit_ruang'])->name('ruangan')->middleware('is_admin');
 Route::post('/olahruangverifikasi', [AdminController::class, 'verifikasi_ruang'])->name('ruangan')->middleware('is_admin');
+Route::post('/hapusruang/{id}', [AdminController::class, 'hapus_ruang'])->name('ruangan')->middleware('is_admin');
 
 Route::get('/pinjaman_saya', [PinjamanController::class, 'index'])->name('pinjaman_saya')->middleware('auth');
 Route::get('/pinjaman_arsip', [PinjamanController::class, 'pinjaman_arsip'])->name('pinjaman_arsip')->middleware('is_admin');

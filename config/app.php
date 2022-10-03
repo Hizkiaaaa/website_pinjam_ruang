@@ -165,7 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
-        
+
         RealRashid\SweetAlert\SweetAlertServiceProvider::class,
         Kyslik\ColumnSortable\ColumnSortableServiceProvider::class,
 

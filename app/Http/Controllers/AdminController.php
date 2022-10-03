@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Gedung;
 use App\Models\Ruang;
 use App\Models\Lantai;
+use App\Models\Pinjaman;
 
 class AdminController extends Controller
 {
@@ -109,6 +110,82 @@ class AdminController extends Controller
         $ruang->update($validateData);
         alert()->success('Berhasil', 'Ruang berhasil diverifikasi');
         return back();
+    }
+
+    // edit ruang
+    public function edit_ruang(Request $request)
+    {
+        $validateData = $request->validate([
+            'nomor_ruang' => 'required',
+            'gedung_id' => 'required',
+            'lantai_id' => 'required',
+            'deskripsi' => 'required',
+            'kapasitas' => 'required',
+        ]);
+        $ruang = Ruang::where('id', $request->id)->first();
+        // cek ruang dan gedung dan lantai
+        $cek_ruang = Ruang::where('nomor_ruang', $request->nomor_ruang)->where('gedung_id', $request->gedung_id)->where('lantai_id', $request->lantai_id)->first();
+        if ($cek_ruang) {
+            if ($cek_ruang->id != $ruang->id) {
+                alert()->error('Gagal', 'Ruang sudah ada');
+                return back();
+            }
+        }
+
+        // upload surat
+        if ($request->file('surat')) {
+            $surat = $request->file('surat')->store('surat_ruangan');
+            $validateData['surat'] = $surat;
+        }
+
+        if($request->file('foto')){
+            $validateData['foto'] = $request->file('foto')->store('foto_ruangan');
+        }
+        $ruang->update($validateData);
+        alert()->success('Berhasil', 'Ruang berhasil diubah');
+        return back();
+    }
+
+    // hapus gedung
+    public function hapus_gedung($id)
+    {
+        $gedung = Gedung::where('id', $id)->first();
+        if($gedung){
+            // cek ruang
+            $ruang = Ruang::where('gedung_id', $gedung->id)->first();
+            if($ruang){
+                alert()->error('Gagal', 'Gedung tidak bisa dihapus karena masih ada ruangan');
+                return back();
+            } else {
+                $gedung->delete();
+                alert()->success('Berhasil', 'Gedung berhasil dihapus');
+                return back();
+            }
+        } else {
+            alert()->error('Gagal', 'Gedung tidak ditemukan');
+            return back();
+        }
+    }
+
+    // hapus ruang
+    public function hapus_ruang($id)
+    {
+        $ruang = Ruang::where('id', $id)->first();
+        if($ruang){
+            // Pinjaman
+            $pinjaman = Pinjaman::where('ruang_id', $ruang->id)->first();
+            if($pinjaman){
+                alert()->error('Gagal', 'Ruang tidak bisa dihapus karena masih ada pinjaman');
+                return back();
+            } else {
+                $ruang->delete();
+                alert()->success('Berhasil', 'Ruang berhasil dihapus');
+                return back();
+            }
+        } else {
+            alert()->error('Gagal', 'Ruang tidak ditemukan');
+            return back();
+        }
     }
 
 
