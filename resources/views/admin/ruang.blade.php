@@ -36,8 +36,6 @@
                                 <th>Nomor Ruang</th>
                                 <th>Deskripsi</th>
                                 <th>Kapasitas</th>
-                                <th>Foto</th>
-                                <th>Surat</th>
                                 <th>Status Aktif</th>
                                 <th>Verifikator</th>
                                 <th>Aksi</th>
@@ -53,14 +51,8 @@
                                 <td>{{ $r->nomor_ruang }}</td>
                                 <td>{{ $r->deskripsi }}</td>
                                 <td>{{ $r->kapasitas }}</td>
-                                <td>
-                                    @if ($r->foto)
-                                    <img src="{{ asset('storage/'.$r->foto) }}" alt="" width="100px">
-                                    @else
-                                    <img src="{{ asset('storage/foto_ruangan/default.png') }}" alt="" width="100px">
-                                    @endif
-                                </td>
-                                <td><a href="{{ asset('storage/'.$r->surat) }}" target="_blank">Lihat Surat</a></td>
+
+
                                 <td>{{ $r->is_active }}</td>
                                 <td>
                                     @if($r->verifikator_id)
@@ -139,14 +131,8 @@
                         <label for="kapasitas">Kapasitas</label>
                         <input type="number" class="form-control" id="kapasitas" name="kapasitas" required>
                     </div>
-                    <div class="form-group">
-                        <label for="foto">Foto</label>
-                        <input type="file" class="form-control" id="foto" name="foto" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="surat">Surat</label>
-                        <input type="file" class="form-control" id="surat" name="surat" required>
-                    </div>
+
+
                     <div class="form-group">
                         <label for="is_active">Status Aktif</label>
                         <select class="form-select" name="is_active" id="is_active" required>
@@ -210,14 +196,8 @@
                         <input type="number" class="form-control" id="kapasitas" name="kapasitas"
                             value="{{ $r->kapasitas }}" required>
                     </div>
-                    <div class="form-group">
-                        <label for="foto">Foto</label>
-                        <input type="file" class="form-control" id="foto" name="foto">
-                    </div>
-                    <div class="form-group">
-                        <label for="surat">Surat</label>
-                        <input type="file" class="form-control" id="surat" name="surat">
-                    </div>
+
+
                     <div class="form-group">
                         <label for="is_active">Status Aktif</label>
                         <select class="form-select" name="is_active" id="is_active" required>

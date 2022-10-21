@@ -43,50 +43,26 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Gedung::create([
-            'nama_gedung' => 'Gedung A',
-            'alamat_gedung' => 'Jl. Jendral Sudirman No. 1',
+            'nama_gedung' => 'Gedung Kalitaman',
+            'alamat_gedung' => 'Letjend., Jl. Sukowati No.51, Kalicacing, Sidomukti, Salatiga City, Central Java 50724',
             'is_active' => 1,
         ]);
 
         Gedung::create([
-            'nama_gedung' => 'Gedung B',
-            'alamat_gedung' => 'Jl. Jendral Sudirman No. 2',
+            'nama_gedung' => 'Gedung Kalitaman',
+            'alamat_gedung' => 'Letjend., Jl. Sukowati No.51, Kalicacing, Sidomukti, Salatiga City, Central Java 50724',
             'is_active' => 1,
         ]);
 
         Gedung::create([
-            'nama_gedung' => 'Gedung C',
-            'alamat_gedung' => 'Jl. Jendral Sudirman No. 3',
+            'nama_gedung' => 'Gedung Kalitaman',
+            'alamat_gedung' => 'Letjend., Jl. Sukowati No.51, Kalicacing, Sidomukti, Salatiga City, Central Java 50724',
             'is_active' => 1,
         ]);
 
         Opd::create([
-            'nama_opd' => 'Badan Kepegawaian dan Pengembangan Sumber Daya Manusia',
+            'nama_opd' => 'Badan Kepegawaian Dinas Komunikasi dan Informatika',
             'akronim' => 'bkpsdm',
-            'is_active' => '1',
-        ]);
-
-        Opd::create([
-            'nama_opd' => 'Badan Pengelolaan Keuangan dan Pendapatan Daerah',
-            'akronim' => 'bpkpd',
-            'is_active' => '1',
-        ]);
-
-        Opd::create([
-            'nama_opd' => 'Badan Kesatuan Bangsa dan Politik',
-            'akronim' => 'bakesbangpol',
-            'is_active' => '1',
-        ]);
-
-        Opd::create([
-            'nama_opd' => 'Badan Penanggulangan Bencana Daerah',
-            'akronim' => 'bpbd',
-            'is_active' => '1',
-        ]);
-
-        Opd::create([
-            'nama_opd' => 'Badan Perencanaan , Penelitian dan Pengembangan Daerah',
-            'akronim' => 'bapeda',
             'is_active' => '1',
         ]);
 
@@ -167,8 +143,8 @@ class DatabaseSeeder extends Seeder
             'gedung_id' => 1,
             'user_id' => 1,
             'nomor_ruang' => 1,
-            'deskripsi' => 'Ruang Rapat 1',
-            'kapasitas' => 10,
+            'deskripsi' => 'AC, Proyektor , Meja , Kursi , tempat nyaman dan bersih',
+            'kapasitas' => 20,
             'foto' => null,
             'surat' => 1,
             'is_active' => 1,
@@ -179,8 +155,8 @@ class DatabaseSeeder extends Seeder
             'gedung_id' => 1,
             'user_id' => 1,
             'nomor_ruang' => 2,
-            'deskripsi' => 'Ruang Rapat 2',
-            'kapasitas' => 10,
+            'deskripsi' => 'AC, Proyektor , Meja , Kursi , tempat nyaman dan bersih',
+            'kapasitas' => 20,
             'foto' => null,
             'surat' => 1,
             'is_active' => 1,
@@ -191,7 +167,7 @@ class DatabaseSeeder extends Seeder
             'gedung_id' => 1,
             'user_id' => 1,
             'nomor_ruang' => 3,
-            'deskripsi' => 'Ruang Rapat 3',
+            'deskripsi' => 'AC, Proyektor , Meja , Kursi , tempat nyaman dan bersih',
             'kapasitas' => 10,
             'foto' => null,
             'surat' => 1,
@@ -242,7 +218,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 1,
             'opd_id' => 1,
             'nip' => '123456',
-            'nama' => 'User Budi',
+            'nama' => 'User Hizkia',
             'no_hp' => '081234567890',
             'email' => 'user@gmail.com',
             'telegram_id' => '1234567890',
@@ -254,22 +230,10 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'opd_id' => 1,
             'nip' => '1234567',
-            'nama' => 'Verifikator Budi',
+            'nama' => 'Verifikator Hizkia',
             'no_hp' => '08123456789',
             'email' => 'verifikator@gmail.com',
             'telegram_id' => '123456789',
-            'password' => bcrypt('12345678'),
-            'is_active' => 1,
-        ]);
-
-        User::create([
-            'role_id' => 5,
-            'opd_id' => 1,
-            'nip' => '12456',
-            'nama' => 'Super Admin Budi',
-            'no_hp' => '0812345679',
-            'email' => 'superadmin@gmail.com',
-            'telegram_id' => '12345679',
             'password' => bcrypt('12345678'),
             'is_active' => 1,
         ]);
